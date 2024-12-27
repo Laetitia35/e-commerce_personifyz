@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Site de vente en ligne personnalisé"/>
+        <title>{% block title %}E-commerce{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous" defer></script>
+        <!-- Bootstrap JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" defer></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+
+
+
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascript %}
+            {% block importmap %}{{ importmap ('app') }}{% endblock %}
+        {% endblock %}
+
+    </head>
+
+    <body>
+        <header class="container-fluid py-4 d-flex justify-content-between align-items-center">
+            <div class="col-md-3 text-center text-md-start">
+                <a href="{{ path('app_home') }}">
+                    <img src="{{ asset('images/logo_perso.png') }}" alt="Votre logo" class="img-fluid" width='200px' height='150px'>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <ul class="nav nav-pills justify-content-center">
+                    <li class="nav-item">
+                        <a href="{{ path('app_home') }}" class="nav-link{% if app.request.get('_route') == 'app_home' %} active{% endif %}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('app_product') }}" class="nav-link{% if app.request.get('_route') == 'app_product' %} active{% endif %}">Produits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('app_contact') }}" class="nav-link{% if app.request.get('_route') == 'app_contact' %} active{% endif %}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-2 d-flex justify-content-end">
+                <div class="navbar-item-custom">
+                    {% if app.user %}
+{#                        <a href="{ path('app_cart') }" class="btn btn-primary me-2">#}
+{#                        Mon panier</a>#}
+                        <a href="{{ path('app_login') }}" class="btn btn-primary me-2" style="text-decoration:none"> Mon compte </br> {{ app.user.firstname }} </a> | <a href ="{{ path('app_logout') }}">Déconnexion</a>
+                    {% else %}
+                        <button class="btn btn-danger my-2 my-sm-0" onclick="btn_auth()" type="submit">
+                            <a class="text-light" href="{{ path('app_login') }}">S'identifier</a>
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+
+        <main class="container my-5">
+            {% block body %}{% endblock %}
+        </main>
+
+        <footer class="fixed-bottom mt-5">
+            <p class="text-center">
+                E-Commerce Store - Edité par Laetitia DECRE © Tous droits réservés - 2024 -
+                <a class="text-light" href="{#{ path('app_rgpd') }#}">Mentions Légales et Politique de confidentialité</a>
+            </p>
+        </footer>
+
+    </body>
+
+</html>
+

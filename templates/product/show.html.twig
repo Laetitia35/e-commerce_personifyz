@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du produit{% endblock %}
+
+{% block body %}
+
+    <h1>{{ product.title }}</h1>
+     {% if product.image %}
+            <img src="{{ product.image }}" class="card-img-top" alt="{{ product.title }}">
+     {% else %}
+        <img src="/images/placeholder.jpg" class="card-img-top" alt="Image indisponible">
+     {% endif %}
+    <p>{{ product.description }}</p>
+    <p>Prix : {{ product.variantCount }}</p>
+
+{% endblock %}
