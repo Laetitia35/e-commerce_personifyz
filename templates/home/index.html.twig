@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur Personifyz - Personnalisez vos articles{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h1 class="display-4">Personnalisez vos produits comme vous le souhaitez !</h1>
+            <p class="lead">Avec Personifyz, créez des articles uniques et personnalisés en ajoutant du texte, des images, des couleurs, et bien plus encore !</p>
+        </div>
+    </div>
+
+    <!-- Carousel -->
+    <div id="carouselImageAccueil" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{{ asset('images/e-commerce.jpg') }}" alt="Première image">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{{ asset('images/image_vente-internet.png') }}" alt="Seconde image">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{{ asset('images/personifyz.png') }}" alt="Troisième image">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselImageAccueil" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Précédent</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselImageAccueil" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Suivant</span>
+        </a>
+    </div>
+
+    <!-- Section Produits -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Nos produits phares</h2>
+        </div>
+
+        <!-- Premier produit -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="https://files.cdn.printful.com/o/upload/product-catalog-img/ef/ef181b7a0c99f895af52b60c017d6d03_l" class="card-img-top" alt="AirPods Case">
+                <div class="card-body">
+                    <h5 class="card-title">Coque AirPods</h5>
+                    <p class="card-text">Protégez vos AirPods tout en ajoutant une touche de style avec cette coque en TPU, résistante aux chocs et pratique grâce à son mousqueton.</p>
+                    <a href="/produits/1" class="btn btn-primary">Personnaliser</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deuxième produit -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="https://files.cdn.printful.com/o/upload/product-catalog-img/e2/e239b78e54f77c63f3ec3bcda3be8e62_l" class="card-img-top" alt="T-Shirt">
+                <div class="card-body">
+                    <h5 class="card-title">T-Shirt Performance Unisexe</h5>
+                    <p class="card-text">Confort et performance se rencontrent dans ce t-shirt unisexe, idéal pour le sport ou les activités en plein air.</p>
+                    <a href="/produits/2" class="btn btn-primary">Personnaliser</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Troisième produit -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="https://files.cdn.printful.com/o/upload/product-catalog-img/16/16b5a6d56334457bb291cc2e4e4eed09_l" class="card-img-top" alt="Acrylic Ornaments">
+                <div class="card-body">
+                    <h5 class="card-title">Ornements en acrylique</h5>
+                    <p class="card-text">Ajoutez une touche personnelle à vos décorations avec des ornements en acrylique personnalisables pour toutes les occasions spéciales.</p>
+                    <a href="/produits/3" class="btn btn-primary">Personnaliser</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Concept de la personnalisation -->
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h3>Notre concept</h3>
+            <p class="lead">Personifyz vous offre une plateforme intuitive où vous pouvez personnaliser une large gamme d'articles : des vêtements, des accessoires, des décorations et bien plus encore. Grâce à notre interface simple, vous pouvez ajouter des textes, des images, choisir des couleurs et créer des designs uniques qui vous ressemblent. Que ce soit pour offrir un cadeau spécial ou pour créer un produit à votre image, nous rendons la personnalisation facile et amusante !</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

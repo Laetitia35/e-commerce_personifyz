@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: personifyz_app
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      APP_ENV: dev
+      APP_SECRET: 1c6a0ea84421d724be6490bd6124320e
+      DATABASE_URL: mysql://root:root@database:3306/personifyz?serverVersion=10.4.32-MariaDB&charset=utf8mb4
+      MAILER_DSN: null://null
+    depends_on:
+      - database
+
+  database:
+    image: mariadb:10.4.32
+    container_name: personifyz_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: personifyz
+      MYSQL_USER: laetitia
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: personifyz_phpmyadmin
+    environment:
+      PMA_HOST: database
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8081:80"
+    depends_on:
+      - database
+
+volumes:
+  db_data:
+
+
+

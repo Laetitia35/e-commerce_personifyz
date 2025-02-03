@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-4">Produits</h1> 
+
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        {% if product.image %}
+                            <img src="{{ product.image }}" class="card-img-top" alt="{{ product.title }}">
+                        {% else %}
+                            <img src="/images/placeholder.jpg" class="card-img-top" alt="Image indisponible">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.title }}</h5>
+                            <p class="card-text">
+                                {{ product.description|default('Description non disponible')|slice(0, 100) ~ '...' }}
+                            </p>
+                            {% if product.variantCount %}
+                                <p class="text-primary font-weight-bold">Prix : {{ product.variantCount|number_format(2, ',', ' ') }} €</p>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="{{ path('app_product_detail', {id: product.id}) }}" class="btn btn-primary">Voir le produit</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-12">
+                    <p class="text-center">Aucun produit disponible pour le moment.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

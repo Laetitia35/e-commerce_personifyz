@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du produit - {{ product.title }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>{{ product.title }}</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                {% if product.image %}
+                    <img src="{{ product.image }}" class="img-fluid" alt="{{ product.title }}">
+                {% else %}
+                    <img src="/images/placeholder.jpg" class="img-fluid" alt="Image indisponible">
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <h3>Description</h3>
+                <p>{{ product.description }}</p>
+                
+                <h4>Caractéristiques</h4>
+                <ul>
+                    <li><strong>Type :</strong> {{ product.type }}</li>
+                    <li><strong>Marque :</strong> {{ product.brand ? product.brand : 'Non spécifié' }}</li>
+                    <li><strong>Modèle :</strong> {{ product.model }}</li>
+                    <li><strong>Dimensions :</strong> {{ product.dimensions ? product.dimensions : 'Non spécifié' }}</li>
+                    <li><strong>Prix :</strong> {{ product.variantCount }} {{ product.currency }} variantes disponibles</li>
+                    <li><strong>État :</strong> {{ product.isDiscontinued ? 'Produit discontinué' : 'Disponible' }}</li>
+                </ul>
+
+                <h4>Catégorie principale</h4>
+                <p>{#{ product.mainCategory ? product.mainCategory.name : 'Non spécifié' }#}</p>
+
+                <h4>Options</h4>
+                <ul>
+                    {% for option in product.options %}
+                        <li>{{ option.name }} : {{ option.value }}</li>
+                    {% else %}
+                        <li>Aucune option disponible.</li>
+                    {% endfor %}
+                </ul>
+
+                <h4>Couleurs disponibles</h4>
+                <ul>
+                    {% for color in product.colors %}
+                        <li>{{ color.name }}</li>
+                    {% else %}
+                        <li>Aucune couleur disponible.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

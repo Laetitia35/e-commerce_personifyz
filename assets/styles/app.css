@@ -1,0 +1,83 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height : 100%;
+}
+
+
+body {
+    background: #ffffff;
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(to right, rgba(19, 151, 246, 0.5), rgba(255, 165, 0, 0.5), rgba(255, 105, 180, 0.4));
+}
+
+nav {
+    background-color: #ccc;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.slider {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+    width: 100%;
+    background : mediumpurple;
+}
+main {
+    padding-bottom: 20px;
+}
+
+/* Autres styles */
+
+.container {
+    max-width: 960px;
+}
+
+.nav-pills {
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #007BFF;
+}
