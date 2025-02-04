@@ -130,4 +130,13 @@ class ProductController extends AbstractController
             'product' => $product,
         ]);
     }
+
+    #[Route('/customize/{id}', name: 'app_customize_product')]
+    public function customizeProduct(Product $product): Response
+    {
+        return $this->render('customize/product.html.twig', [
+            'product' => $product
+        ]);
+    }
+
 }

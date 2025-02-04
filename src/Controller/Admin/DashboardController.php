@@ -50,14 +50,21 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', User::class);
-        yield MenuItem::linkToCrud('Categories', 'fas fa-list', MainCategory::class);
-        yield MenuItem::linkToCrud('Produits', 'fas fa-list', Product::class);
-        yield MenuItem::linkToCrud('Options', 'fas fa-list', Option::class);
-        yield MenuItem::linkToCrud('Valeurs des options', 'fas fa-list', OptionValue::class);
-        yield MenuItem::linkToCrud('Techniques', 'fas fa-list', Technique::class);
-        yield MenuItem::linkToCrud('Fichiers', 'fas fa-list', File::class);
-        yield MenuItem::linkToCrud('Couleurs', 'fas fa-list', Color::class);
+        yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
+
+        if ($this->isGranted('ROLE_SUPER_ADMIN')) {
+            yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', User::class);
+            yield MenuItem::linkToCrud('Categories', 'fas fa-list', MainCategory::class);
+            yield MenuItem::linkToCrud('Produits', 'fas fa-list', Product::class);
+            yield MenuItem::linkToCrud('Options', 'fas fa-list', Option::class);
+            yield MenuItem::linkToCrud('Valeurs des options', 'fas fa-list', OptionValue::class);
+            yield MenuItem::linkToCrud('Techniques', 'fas fa-list', Technique::class);
+            yield MenuItem::linkToCrud('Fichiers', 'fas fa-list', File::class);
+            yield MenuItem::linkToCrud('Couleurs', 'fas fa-list', Color::class);
+        } elseif ($this->isGranted('ROLE_USER')) {
+            yield MenuItem::linkToRoute('Personnaliser mon produit', 'fas fa-edit', 'app_customize_product');
+        }
+
     }
 }
+
