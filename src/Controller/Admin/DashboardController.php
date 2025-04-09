@@ -50,6 +50,13 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        if ($this->isGranted('ROLE_ADMIN')) {
+            yield MenuItem::linkToCrud('Produits', 'fa fa-box', Product::class);
+        }
+    
+        if ($this->isGranted('ROLE_CLIENT')) {
+            yield MenuItem::linkToCrud('Mes produits', 'fa fa-paint-brush', Product::class);
+        }
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', User::class);
         yield MenuItem::linkToCrud('Categories', 'fas fa-list', MainCategory::class);
